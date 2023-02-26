@@ -9,6 +9,7 @@
 #import "WBJieba.h"
 #include <jieba/Segmentor.h>
 
+// Jieba Githup: https://github.com/yanyiwu/cppjieba
 @implementation WBJieba
 
 void wb_jieba_init(NSString * _Nullable user_dict_path) {
