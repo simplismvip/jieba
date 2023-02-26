@@ -18,6 +18,10 @@ NSString *wb_jieba_cut(NSString * _Nullable text);
 
 NSArray<NSString *> *wb_tokenizer_ref(NSString * _Nullable text);
 
+// keword
+void jieba_keyword_init();
+NSString *jieba_keyword_Extract(NSString * _Nullable text);
+
 @end
 
 NS_ASSUME_NONNULL_END

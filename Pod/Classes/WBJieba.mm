@@ -74,4 +74,47 @@ NSArray<NSString *> *wb_tokenizer_ref(NSString * _Nullable text) {
     return keywords;
 }
 
+// MARKL --keyword
+void jieba_keyword_init() {
+    NSString *resource_path = [[NSBundle bundleForClass:WBJieba.class] resourcePath];
+    NSString *dict_path     = [resource_path stringByAppendingPathComponent:@"iosjieba.bundle/dict/jieba.dict.small.utf8"];
+    NSString *hmm_path      = [resource_path stringByAppendingPathComponent:@"iosjieba.bundle/dict/hmm_model.utf8"];
+    NSString *idf_path      = [resource_path stringByAppendingPathComponent:@"iosjieba.bundle/dict/idf.utf8"];
+    NSString *stop_path      = [resource_path stringByAppendingPathComponent:@"iosjieba.bundle/dict/stop_words.utf8"];
+    
+    const char *c_dict_path = dict_path.UTF8String;
+    const char *c_hmm_path  = hmm_path.UTF8String;
+    const char *c_idf_path  = idf_path.UTF8String;
+    const char *c_stop_path = stop_path.UTF8String;
+    
+    const size_t topk = 5;
+    JiebaInitExtract(c_dict_path, c_hmm_path, c_idf_path, c_stop_path);
+}
+
+NSString * jieba_keyword_Extract(NSString * _Nullable text) {
+    if ((!text) || ((NSNull *)text == [NSNull null])) {
+        return @"";
+    }
+    else if ([text isKindOfClass:NSString.class]) {
+        if (text.length <= 0) {
+            return @"";
+        }
+    }
+    const char *sentence = text.UTF8String;
+    std::vector<std::string> words;
+    const size_t topk = 5;
+    JiebaExtract(sentence, words, topk);
+    std::string result;
+    result << words;
+    
+    NSString *c_string = [NSString stringWithUTF8String:result.c_str()];
+    
+    c_string = [c_string stringByReplacingOccurrencesOfString:@"[" withString:@""];
+    c_string = [c_string stringByReplacingOccurrencesOfString:@"]" withString:@""];
+    c_string = [c_string stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    c_string = [c_string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    return c_string;
+}
+
 @end

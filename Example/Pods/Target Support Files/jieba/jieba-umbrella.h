@@ -14,6 +14,7 @@
 #import "FullSegment.hpp"
 #import "HMMSegment.hpp"
 #import "ISegment.hpp"
+#import "Jieba.hpp"
 #import "KeywordExtractor.hpp"
 #import "ArgvContext.hpp"
 #import "BlockingQueue.hpp"

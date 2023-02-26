@@ -1,5 +1,5 @@
 PODS:
-  - jieba (0.1.0)
+  - jieba (0.0.1)
 
 DEPENDENCIES:
   - jieba (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  jieba: 96f833409e575abea28775c303a2dce875677f7b
+  jieba: bed1986b09448a165b384e89f935c6453592dea9
 
 PODFILE CHECKSUM: 53578227dc264e51062c2d79635a77a7e4be40b6
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.11.2

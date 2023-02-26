@@ -23,12 +23,15 @@
     
     NSString *text = @"我想查看下云计算";
     NSString *jieba = wb_jieba_cut(text);
-    
     NSArray *array = [jieba componentsSeparatedByString:@","];
-    
     NSArray *a = @[@"我", @"想", @"查看", @"下", @"云计算"];
-    
     NSLog(@"---------:%@ \n%@", array, a);
+    
+    NSString *keyWordText = @"描写相思的诗句！";
+    jieba_keyword_init();
+    NSString *keyword = jieba_keyword_Extract(keyWordText);
+    NSArray *keywordArray = [jieba componentsSeparatedByString:@","];
+    NSLog(@"---------:%@", keywordArray);
 }
 
 @end
