@@ -22,6 +22,11 @@ NSArray<NSString *> *wb_tokenizer_ref(NSString * _Nullable text);
 void jieba_keyword_init();
 NSString *jieba_keyword_Extract(NSString * _Nullable text);
 
+/// 关键字提取
++ (NSString *)textKeyword:(NSString *)text;
+/// 语句分割
++ (NSString *)textCut:(NSString *)text;
+
 @end
 
 NS_ASSUME_NONNULL_END

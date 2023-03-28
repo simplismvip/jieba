@@ -118,4 +118,14 @@ NSString * jieba_keyword_Extract(NSString * _Nullable text) {
     return c_string;
 }
 
++ (NSString *)textKeyword:(NSString *)text {
+    jieba_keyword_init();
+    return jieba_keyword_Extract(text);
+}
+
++ (NSString *)textCut:(NSString *)text {
+    wb_jieba_init(nil);
+    return wb_jieba_cut(text);
+}
+
 @end
